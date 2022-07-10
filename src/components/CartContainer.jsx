@@ -10,8 +10,8 @@ import { BiRupee } from "react-icons/bi";
 
 const CartContainer = () => {
   const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
-  const [tot, setTot] = useState(0);
   const [flag, setFlag] = useState(1);
+  const [tot, setTot] = useState(0);
 
   const showCart = () => {
     dispatch({
@@ -26,7 +26,7 @@ const CartContainer = () => {
     }, 0);
 
     setTot(totalPrice);
-  }, [tot, flag]);
+  }, [tot, flag, showCart]);
 
   const clearCart = () => {
     dispatch({
@@ -96,7 +96,7 @@ const CartContainer = () => {
             <div className="w-full flex items-center justify-between">
               <p className="text-gray-200 text-xl font-semibold">Total</p>
               <p className="text-gray-200 text-xl font-semibold flex items-center ">
-                <BiRupee fontSize="20px" color="white" /> {tot + 2.5}
+                <BiRupee fontSize="20px" color="white" /> {tot + 40}
               </p>
             </div>
             {user ? (
