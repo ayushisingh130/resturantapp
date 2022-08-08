@@ -8,20 +8,20 @@ import { actionType } from "./context/reducer";
 import MenuContainer from "./components/MenuContainer";
 
 const App = () => {
-  const [{ foodItems }, dispatch] = useStateValue();
-
-  const fetchData = async () => {
-    await getAllFoodItems().then((data) => {
-      dispatch({
-        type: actionType.SET_FOOD_ITEMS,
-        foodItems: data,
-      });
-    });
-  };
+  const [foodItems, dispatch] = useStateValue();
 
   useEffect(() => {
+    const fetchData = async () => {
+      await getAllFoodItems().then((data) => {
+        dispatch({
+          type: actionType.SET_FOOD_ITEMS,
+          foodItems: data,
+        });
+      });
+    };
     fetchData();
   }, []);
+
   return (
     <AnimatePresence exitBeforeEnter>
       <div className="w-screen h-auto flex flex-col bg-primary ">
